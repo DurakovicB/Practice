@@ -1,0 +1,41 @@
+class Node:
+    def __init__(self,value):
+        self.value=value
+        self.left=None
+        self.right=None
+
+        
+    def setLeft(self,newNode):
+        self.left=newNode
+    def setRight(self,newNode):
+        self.right=newNode
+
+def insert(currentNode, newNode):
+        if(newNode.value>currentNode.value):
+            if(currentNode.right==None):
+                currentNode.right=newNode
+                print("inserted new node "+str(newNode.value)+"right of the current node "+str(currentNode.value))
+            else:
+                print("new node "+str(newNode.value)+" is greater than current node "+str(currentNode.value))
+                insert(currentNode.right,newNode)
+                
+        elif(newNode.value<currentNode.value):
+            if(currentNode.left==None):
+                currentNode.left=newNode
+                print("inserted new node "+str(newNode.value)+"left of the current node "+str(currentNode.value))
+            else:
+                print("new node "+str(newNode.value)+" is smaller than current node "+str(currentNode.value))
+                insert(currentNode.left,newNode)
+
+class BST:
+    def __init__(self,value):
+        self.root=Node(value)
+        
+    def insertAtRoot(self,node):
+        insert(self.root,node)
+    
+tree=BST(10)
+for i in range(10):
+    print("Please input new node value:")
+    newNode=Node(int(input()))
+    tree.insertAtRoot(newNode)
