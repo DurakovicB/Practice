@@ -26,6 +26,24 @@ def insert(currentNode, newNode):
             else:
                 print("new node "+str(newNode.value)+" is smaller than current node "+str(currentNode.value))
                 insert(currentNode.left,newNode)
+                
+def search(currentNode, value):
+        if(value==currentNode.value):
+            print("The value is present in the tree!")
+        elif(value>currentNode.value):
+            if(currentNode.right==None):
+                print("Node is not present in the tree!")
+            else:
+                print(str(value)+" is greater than current node "+str(currentNode.value))
+                search(currentNode.right,value)
+                
+        elif(value<currentNode.value):
+            if(currentNode.left==None):
+                print("Node is not present in the tree!")
+
+            else:
+                print(str(value)+" is smaller than current node "+str(currentNode.value))
+                search(currentNode.left,value)
 
 class BST:
     def __init__(self,value):
@@ -34,8 +52,12 @@ class BST:
     def insertAtRoot(self,node):
         insert(self.root,node)
     
+    def searchForValue(self,value):
+        search(self.root,value)
+
 tree=BST(10)
 for i in range(10):
-    print("Please input new node value:")
+    print(str(i)+". Please input new node value:")
     newNode=Node(int(input()))
     tree.insertAtRoot(newNode)
+tree.searchForValue(8)
