@@ -1,0 +1,21 @@
+class Stack:
+    def __init__(self):
+        self.array=[]
+    def length(self):
+        return len(self.array)
+    def pop(self):
+        if(self.length()==0):
+            print("The stack is empty!")
+        else:
+            return self.array.pop()
+    def insert(self,value):
+        self.array.append(value)
+stack=Stack()
+stack.insert(2)
+stack.insert(5)
+stack.insert(1)
+stack.insert(3)
+
+print(stack.length())
+for i in range(5):
+    print(stack.pop())
